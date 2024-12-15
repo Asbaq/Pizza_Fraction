@@ -26,7 +26,7 @@ public class LoadScene : MonoBehaviour
 
     public void SyncLoadScene()
     {
-        // Log a message for debugging
+        // Log a message for debugging 
         Debug.Log("Loading new scene...");
 
         // Load the scene synchronously by name
