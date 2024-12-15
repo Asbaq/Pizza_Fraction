@@ -22,6 +22,10 @@ public class Level_1_Manager : MonoBehaviour
     public int targetNumber = 2;          // Starting target number
     public int denominator = 8;           // Fixed denominator for fractions
 
+    public AudioSource audioSource;      // Reference to AudioSource
+    public AudioClip successClip;        // Clip to play on success (if condition)
+    public AudioClip failureClip;        // Clip to play on failure (else condition)
+
     private void Start()
     {
         InitializeGame();
@@ -86,11 +90,15 @@ public class Level_1_Manager : MonoBehaviour
     /// <summary>
     /// Compares the active Real_Pieces with the target number.
     /// </summary>
+
     public void CompareTargetWithList()
     {
         if (RealActiveCount == targetNumber)
         {
             Debug.Log($"Target number {targetNumber} achieved!");
+
+            // Play success audio
+            PlayAudio(successClip);
 
             WinUI.SetActive(true);
 
@@ -101,7 +109,27 @@ public class Level_1_Manager : MonoBehaviour
             ShowDemoPieces(targetNumber);
             ResetRealPieces();
         }
+        else
+        {
+            Debug.Log($"Target number {targetNumber} not achieved!");
+
+            // Play failure audio
+            PlayAudio(failureClip);
+        }
     }
+
+    private void PlayAudio(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip); // Play the specified audio clip
+        }
+        else
+        {
+            Debug.LogWarning("AudioSource or AudioClip is not assigned!");
+        }
+    }
+
 
     /// <summary>
     /// Activates the Demo_Pieces up to the target count.

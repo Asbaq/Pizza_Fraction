@@ -16,6 +16,10 @@ public class Level_3_Manager : MonoBehaviour
     public int DemoActiveCount = 0;       // Tracks active count for Demo_Pieces
     public int targetNumber = 4;          // Starting target number
 
+    public AudioSource audioSource;      // Reference to AudioSource
+    public AudioClip successClip;        // Clip to play on success (if condition)
+    public AudioClip failureClip;        // Clip to play on failure (else condition)
+
     /// <summary>
     /// Compares the active Real_Pieces with the target number.
     /// </summary>
@@ -27,6 +31,9 @@ public class Level_3_Manager : MonoBehaviour
             // Check if the input number matches the target
             if (inputNumber == targetNumber)
             {
+                // Play success audio
+                PlayAudio(successClip);
+
                 Debug.Log($"Target number {targetNumber} achieved!");
                 WinUI.SetActive(true);  // Display Win message
 
@@ -50,6 +57,8 @@ public class Level_3_Manager : MonoBehaviour
             }
             else
             {
+                // Play failure audio
+                PlayAudio(failureClip);
                 Debug.Log("Incorrect number entered. Try again.");
             }
         }
@@ -58,4 +67,17 @@ public class Level_3_Manager : MonoBehaviour
             Debug.Log("Invalid input! Please enter a valid number.");
         }
     }
+
+    private void PlayAudio(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip); // Play the specified audio clip
+        }
+        else
+        {
+            Debug.LogWarning("AudioSource or AudioClip is not assigned!");
+        }
+    }
+
 }
