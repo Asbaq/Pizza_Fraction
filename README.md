@@ -5,6 +5,10 @@
 ## 📌 Introduction
 **Pizza_Fraction** is an interactive educational game designed to teach players about fractions in a fun and engaging way. Players are required to activate or deactivate pieces of a pizza to match a target fraction. The game includes smooth interactions, audio feedback, and a progressive difficulty system. Players will work through levels, each with different fraction challenges, to enhance their understanding of fractions.
 
+🔗 Video Trailer
+
+https://youtu.be/mgXqv1YJlnU?si=F9amHefKlmwKumva
+
 ## 🔥 Features
 - 🍕 Use interactive pizza pieces to visualize fractions.
 - 🎮 Simple and intuitive controls for activating and deactivating pizza slices.
